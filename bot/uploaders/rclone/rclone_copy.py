@@ -15,7 +15,7 @@ async def rclone_copy_transfer(e, conf_path):
     log.info(f'{origin_drive}:{origin_dir}-{dest_drive}:{dest_dir}')
 
     rclone_copy_cmd = ['rclone', 'copy', f'--config={conf_path}', f'{origin_drive}:{origin_dir}',
-                       f'{dest_drive}:{dest_dir}', '-P']
+                       f'{dest_drive}:{dest_dir}', '-P', '--drive-chunk-size 2M', '--drive-acknowledge-abuse']
 
     message = await e.edit("Preparing to copy...")
 
