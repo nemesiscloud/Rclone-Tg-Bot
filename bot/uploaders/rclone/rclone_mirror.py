@@ -47,7 +47,7 @@ async def rclone_uploader(path, user_msg, new_name, tag, is_rename= False):
         path= old_path    
             
     rclone_copy_cmd = ['rclone', 'copy', f'--config={conf_path}', str(path),
-                            f'{dest_drive}:{dest_base}', '-P']
+                            f'{dest_drive}:{dest_base}', '-P', '--drive-chunk-size 2M', '--drive-acknowledge-abuse', '--transfers 1', '--ignore-existing']
 
     log.info("Uploading...")
 
