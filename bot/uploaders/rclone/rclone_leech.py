@@ -40,7 +40,7 @@ async def rclone_downloader(client, user_msg, chat_id, origin_dir, dest_dir, fol
         log.info(f"{origin_drive}:{origin_dir}:{dest_dir}")
 
         rclone_copy_cmd = [
-            'rclone', 'copy', f'--config={conf_path}', f'{origin_drive}:{origin_dir}', f'{dest_dir}', '-P', '--drive-chunk-size 2M', '--drive-acknowledge-abuse', '--transfers 1', '--ignore-existing']
+            'rclone', 'copy', f'--config={conf_path}', f'{origin_drive}:{origin_dir}', f'{dest_dir}', '-P']
 
         rclone_pr = subprocess.Popen(
             rclone_copy_cmd,
